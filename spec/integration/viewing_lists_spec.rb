@@ -13,6 +13,7 @@ feature "Viewing Lists -" do
   scenario "Viewing a single list" do
     click_link "Show"
     page.should have_content(list.name)
+    page.find_link("Edit")[:href].should == edit_list_path(list)
     page.find_link("Back")[:href].should == lists_path
   end
 end
