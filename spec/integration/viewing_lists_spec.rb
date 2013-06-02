@@ -15,5 +15,7 @@ feature "Viewing Lists -" do
     page.should have_content(list.name)
     page.find_link("Edit")[:href].should == edit_list_path(list)
     page.find_link("Back")[:href].should == lists_path
+    page.find_link("Delete")[:href].should == list_path(list)
+    page.find_link("Delete").native["data-method"].should == "delete"
   end
 end

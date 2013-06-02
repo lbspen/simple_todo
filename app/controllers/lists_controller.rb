@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
 
-  before_filter :find_list, :only => [:show, :edit, :update]
+  before_filter :find_list, :only => [:show, :edit, :update, :destroy]
 
   def index
     @lists = List.all    
@@ -33,6 +33,11 @@ class ListsController < ApplicationController
       flash[:alert] = "List has not been updated."
       render :action => "edit"
     end
+  end
+
+  def destroy
+    @list.destroy
+    redirect_to lists_path, :notice => "List has been deleted."
   end
 
   private
