@@ -10,8 +10,12 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(params[:list])
-    @list.save
-    redirect_to @list, :notice => "List was successfully created."  
+    if @list.save
+      redirect_to @list, :notice => "List was successfully created."  
+    else
+      flash[:alert] = "List has not been created."
+      render :action => "new"
+    end
   end
 
   def show

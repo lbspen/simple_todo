@@ -1,5 +1,6 @@
 <h2>New List</h2>
 <%= form_for(@list) do |f| %>
+  <%= error_messages_for @list, :header_message => nil %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
