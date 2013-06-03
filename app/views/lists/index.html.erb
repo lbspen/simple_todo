@@ -3,12 +3,14 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Tasks</th>
     <th></th>
     <th></th>
   </tr>
   <% @lists.each do |list| %>
     <tr>
       <td><%= list.name %></td>
+      <td><%= list.tasks.length %></td>
       <td><%= link_to "Show", list %></td>
       <td><%= link_to "Edit", edit_list_path(list) %></td>
       <td><%= link_to "Delete", list_path(list), :method => :delete,
