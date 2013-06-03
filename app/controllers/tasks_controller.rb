@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   before_filter :find_list
-  before_filter :find_task, :only => [:show, :edit, :update]
+  before_filter :find_task, :only => [:show, :edit, :update, :destroy]
 
   def new
     @task = @list.tasks.build   
@@ -30,6 +30,11 @@ class TasksController < ApplicationController
       flash[:alert] = "Task has not been updated."
       render :action => :edit
     end
+  end
+
+  def destroy
+    @task.destroy
+    redirect_to @list, :notice => "Task has been deleted."  
   end
 
   private

@@ -5,12 +5,15 @@
     <th>Title</th>
     <th>Notes</th>
     <th></th>
+    <th></th>
   </tr>
   <% @list.tasks.each do |task| %>
     <tr>
       <td><%= task.title %></td>
       <td><%= simple_format(task.notes) %></td>
       <td><%= link_to "Edit Task", edit_list_task_path(@list, task) %></td>
+      <td><%= link_to "Delete Task", list_task_path(@list, task),
+        :method => :delete, :confirm => "Are you sure you want to delete?" %></td>
     </tr>
   <% end %>
 </table>
